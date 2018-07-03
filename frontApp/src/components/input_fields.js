@@ -21,7 +21,7 @@ class InputField extends Component {
   }
 
   clickHandler(e) {
-    request.post('/posts/new').set('Content-Type', 'application/json').send({name: this.state.name, comment: this.state.comment}).end( (err, res) => { });
+    request.post('/posts/new').set('Content-Type', 'application/json').send({name: this.state.name, comment: this.state.comment.replace(/\n/g, '<br/>')}).end( (err, res) => { });
   }
 
   changeNameTxt(e) {
@@ -33,14 +33,14 @@ class InputField extends Component {
 
   render() {
     const nameProps = { id: "name-input", defaultValue: "名無し-サン" }
-    const commentProps = { id: "comment-input", placeholder: "こんにちは", multiLine: true, rows: 5, autoForcus: true, fullwidth: true };
+    const commentProps = { id: "comment-input", placeholder: "こんにちは"};
     return (
       <div>
         <p>
           <TextField name="name" label="ハンドルネーム" onChange={this.changeNameTxt} inputProps={nameProps}/>
         </p>
         <p> 
-          <TextField name="comment" label="コメント" onChange={this.changeCommentTxt} inputProps={commentProps} />
+          <TextField name="comment" label="コメント" onChange={this.changeCommentTxt} inputProps={commentProps} multiline fullwidth rows={5} />
         </p>
         <p> <Button variant="outlined" color="primary" onClick={this.clickHandler}> submit </Button> </p>
       </div>

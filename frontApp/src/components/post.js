@@ -25,7 +25,7 @@ class Post extends Component {
         <ExpansionPanel expanded={this.state.expanded==='panel'} onChange={this.handleChange('panel')}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <Typography className={classes.heading}> {this.state.name} </Typography>
-          <Typography className={classes.secondaryHeading}> {this.state.comment} </Typography>
+          <Typography className={classes.secondaryHeading}> {`${this.state.comment}`.substring(0,10)} </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
           <Typography>

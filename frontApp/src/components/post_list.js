@@ -30,7 +30,7 @@ class PostList extends Component {
   render() {
     const {classes} = this.props
     return(
-      <div classname={classes.root}>
+      <div classname={classes.root} style={{maxHeight: window.innerHeight*0.5, overflow: 'auto'}}>
       <List component="nav">
       { this.state.posts.map( (post) => {
           return(
