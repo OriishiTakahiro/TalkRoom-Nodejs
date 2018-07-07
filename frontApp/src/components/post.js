@@ -29,7 +29,7 @@ class Post extends Component {
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
           <Typography>
-          {this.state.comment}
+          { `${this.state.comment}`.split("\n").map( (m) => { return <p align="left">{m}</p>;} ) }
           </Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>

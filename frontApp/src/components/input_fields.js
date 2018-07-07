@@ -21,7 +21,8 @@ class InputField extends Component {
   }
 
   clickHandler(e) {
-    request.post('/posts/new').set('Content-Type', 'application/json').send({name: this.state.name, comment: this.state.comment.replace(/\n/g, '<br/>')}).end( (err, res) => { });
+    request.post('/posts/new').set('Content-Type', 'application/json').send({name: this.state.name, comment: this.state.comment}).end( (err, res) => { });
+    this.setState({comment: ""});
   }
 
   changeNameTxt(e) {
@@ -32,8 +33,8 @@ class InputField extends Component {
   }
 
   render() {
-    const nameProps = { id: "name-input", defaultValue: "名無し-サン" }
-    const commentProps = { id: "comment-input", placeholder: "こんにちは"};
+    const nameProps = { id: "name-input", defaultValue: "名無し-サン", value: this.state.name };
+    const commentProps = { id: "comment-input", placeholder: "こんにちは", value: this.state.comment };
     return (
       <div>
         <p>

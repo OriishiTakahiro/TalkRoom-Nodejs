@@ -16,7 +16,6 @@ class PostList extends Component {
 
   componentDidMount() {
     request.get('/posts').set('Content-Type', 'application/json').send({}).end( (err, res) => {
-
       const posts = res.body.reduce( (acc, post) => {
         acc.push({name: post.name, comment: post.comment});
         return acc;
